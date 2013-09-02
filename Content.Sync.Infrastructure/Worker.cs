@@ -1,13 +1,11 @@
-﻿using Content.Sync.Interfaces;
-using Content.Sync.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Content.Sync
+namespace Content.Sync.Infrastructure
 {
     /// <summary>
     /// Represents the worker class.
@@ -17,11 +15,16 @@ namespace Content.Sync
     /// </summary>
     public class Worker<T>
     {
-        public IWorkItemSource Source { get; set; }
+        public Worker(Action<T> action)
+        {
+            this.Action = action;
+        }
+
+        private Action<T> Action { get; set; }
         private int _workerState = WorkerState.Stopped;
         private CancellationTokenSource _tokenSource = null;
         private ManualResetEventSlim _waitHandle = null;
-        public void Start()
+        public void Start(T startupArgs)
         {
             // Specification
             // To make calling Start multiple times a safe call, we use a worker state
@@ -34,12 +37,12 @@ namespace Content.Sync
             {
                 _waitHandle = new ManualResetEventSlim(false);
                 _tokenSource = new CancellationTokenSource();
-                this.StartWork(_tokenSource.Token);
+                this.StartWork(startupArgs, _tokenSource.Token);
                 _workerState = WorkerState.Started;
             }
         }
 
-        private async Task StartWork(CancellationToken cancellationToken)
+        private async Task StartWork(T startupArgs, CancellationToken cancellationToken)
         {
             // Specification
             // Until a cancellation is requested, continue iterating thru the work source.
@@ -47,11 +50,8 @@ namespace Content.Sync
             // then set the waitHandle to signal that execution has stopped.
             try
             {
-                while (cancellationToken.IsCancellationRequested == false)
-                {
-                    var work = await this.Source.GetNextItemAsync();
-                    await work.Do();
-                }
+                if (cancellationToken.IsCancellationRequested == false)
+                    await Task.Run(() => this.Action(startupArgs), cancellationToken);
             }
             finally
             {

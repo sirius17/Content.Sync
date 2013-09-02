@@ -1,6 +1,4 @@
-﻿using Content.Sync.Interfaces;
-using Content.Sync.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +16,21 @@ namespace Content.Sync.Clarifi
             // Process the hotel work item.
             // Incase the processing is successful, checkpoint the work item id.
             // Incase the processing has failed, then handle the failure and checkpoint the id.
-            var hotelWorkItem = item.ToHotelWorkItem();
-            await ProcessHotelWorkItem(item.ToHotelWorkItem(), cancellationToken);
-            
+            Exception fault = null;
+            try
+            {
+                await ProcessHotelWorkItem(item, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                fault = ex;
+            }
+            if (fault != null)
+                await OnFault(item, fault);
         }
 
-        protected abstract Task ProcessHotelWorkItem( HotelWorkItem workItem, CancellationToken cancellationToken );
+        protected abstract Task ProcessHotelWorkItem( WorkItem workItem, CancellationToken cancellationToken );
+
+        protected abstract Task OnFault(WorkItem workItem, Exception ex);
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Content.Sync.Clarifi;
+using Content.Sync.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +19,7 @@ namespace Content.Sync.Service
         }
 
         protected override void OnStart(string[] args)
-        {
+        {   
         }
 
         protected override void OnStop()

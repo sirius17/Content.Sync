@@ -2,8 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{941FC503-4B9A-4D60-B884-33B5235FFE8C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Sync", "Content.Sync\Content.Sync.csproj", "{864851FD-55A1-4121-A09A-FD1DB1F77416}"
+	ProjectSection(SolutionItems) = preProject
+		Library\Appacitive.Sdk.dll = Library\Appacitive.Sdk.dll
+		Library\Appacitive.Sdk.Net45.dll = Library\Appacitive.Sdk.Net45.dll
+		Library\Newtonsoft.Json.dll = Library\Newtonsoft.Json.dll
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Sync.Fixtures", "Content.Sync.Fixtures\Content.Sync.Fixtures.csproj", "{8DDB1614-9208-421D-81BF-8B51BE28A3CA}"
 EndProject
@@ -13,16 +16,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Sync.Appacitive", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Sync.Clarifi", "Content.Sync.Clarifi\Content.Sync.Clarifi.csproj", "{7F9BFDC2-365E-4542-ADA4-7AC5EE82F93E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Sync.Infrastructure", "Content.Sync.Infrastructure\Content.Sync.Infrastructure.csproj", "{C7C5F4EB-834A-468B-B92B-37CE5824C26E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{864851FD-55A1-4121-A09A-FD1DB1F77416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{864851FD-55A1-4121-A09A-FD1DB1F77416}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{864851FD-55A1-4121-A09A-FD1DB1F77416}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{864851FD-55A1-4121-A09A-FD1DB1F77416}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8DDB1614-9208-421D-81BF-8B51BE28A3CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8DDB1614-9208-421D-81BF-8B51BE28A3CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DDB1614-9208-421D-81BF-8B51BE28A3CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +40,10 @@ Global
 		{7F9BFDC2-365E-4542-ADA4-7AC5EE82F93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F9BFDC2-365E-4542-ADA4-7AC5EE82F93E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F9BFDC2-365E-4542-ADA4-7AC5EE82F93E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7C5F4EB-834A-468B-B92B-37CE5824C26E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7C5F4EB-834A-468B-B92B-37CE5824C26E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7C5F4EB-834A-468B-B92B-37CE5824C26E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7C5F4EB-834A-468B-B92B-37CE5824C26E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

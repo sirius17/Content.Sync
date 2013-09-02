@@ -1,4 +1,4 @@
-﻿using Content.Sync.Interfaces;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,13 +6,26 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Content.Sync.Model
+namespace Content.Sync.Clarifi
 {
     /// <summary>
     /// Represents a single work item that is to be processed.
     /// </summary>
     public class WorkItem
     {
+
+        public string TenantId { get; internal set; }
+
+        public string HotelArticleId { get; internal set; }
+
+        public string HotelId { get; internal set; }
+
+        public string SupplierFamily { get; internal set; }
+
+        public long Revision { get; internal set; }
+
+        public string DataType { get; internal set; }
+
         public async Task Do()
         {
             await this.Do(CancellationToken.None);

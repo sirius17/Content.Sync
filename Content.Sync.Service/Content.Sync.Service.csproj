@@ -56,6 +56,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="unity.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Content.Sync.Clarifi\Content.Sync.Clarifi.csproj">
+      <Project>{7f9bfdc2-365e-4542-ada4-7ac5ee82f93e}</Project>
+      <Name>Content.Sync.Clarifi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Content.Sync.Infrastructure\Content.Sync.Infrastructure.csproj">
+      <Project>{c7c5f4eb-834a-468b-b92b-37ce5824c26e}</Project>
+      <Name>Content.Sync.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
