@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ContentUpdate.Hotel">
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +59,10 @@
     <ProjectReference Include="..\Content.Sync.Clarifi\Content.Sync.Clarifi.csproj">
       <Project>{7f9bfdc2-365e-4542-ada4-7ac5ee82f93e}</Project>
       <Name>Content.Sync.Clarifi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Content.Sync.Data.Factories\Content.Sync.Data.Factories.csproj">
+      <Project>{B116B4C4-DDED-47FC-A316-603356CC2CB9}</Project>
+      <Name>Content.Sync.Data.Factories</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
