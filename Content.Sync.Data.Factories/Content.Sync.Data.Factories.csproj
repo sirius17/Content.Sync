@@ -30,6 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ContentUpdate.Hotel">
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.dll</HintPath>
+    </Reference>
+    <Reference Include="ContentUpdate.Hotel.DAL.Appacitive">
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.DAL.Appacitive.dll</HintPath>
+    </Reference>
+    <Reference Include="ContentUpdate.Hotel.DAL.v2">
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.DAL.v2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,8 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppacitiveDataProviderFactory.cs" />
     <Compile Include="HotelDataProviderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlDataProviderFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Content.Sync.Data.Interfaces\Content.Sync.Data.Interfaces.csproj">
