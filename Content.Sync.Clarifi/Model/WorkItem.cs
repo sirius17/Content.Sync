@@ -13,18 +13,21 @@ namespace Content.Sync.Clarifi
     /// </summary>
     public class WorkItem
     {
-
         public string TenantId { get; internal set; }
 
-        public string HotelArticleId { get; internal set; }
+        public string ArticleId { get; internal set; }
 
+        public Schema MasterSchema { get; set; }
+
+        public ChangeActionType ChangeAction { get; set; }
+
+        public Schema ChildSchema { get; internal set; }
+        
         public string HotelId { get; internal set; }
 
         public string SupplierFamily { get; internal set; }
 
         public long Revision { get; internal set; }
-
-        public string DataType { get; internal set; }
 
         public async Task Do()
         {
@@ -42,5 +45,34 @@ namespace Content.Sync.Clarifi
             var command = factory.BuildCommand(this);
             await command.Execute(this, cancellationToken);
         }
+    }
+
+    public enum ChangeActionType
+    {
+        Add,
+        Delete,
+        Update
+    }
+
+    public enum Schema
+    {
+        Hotel,
+        SupplierHotel,
+        SupplierFamily,
+        Amenity,
+        AmenityGroup,
+        Attration,
+        InOutDetail,
+        Description,
+        Detail,
+        Policy,
+        CancellationPolicy,
+        Chain,
+        TagGroup,
+        Tag,
+        SupplierTag,
+        ActivityGroup,
+        HotelActivity,
+        Image
     }
 }

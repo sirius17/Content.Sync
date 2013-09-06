@@ -18,11 +18,11 @@ namespace Content.Sync.UpdateCommands
         {
             var key = new HotelProperty()
             {
-                AppacitiveId = workItem.HotelArticleId,
+                AppacitiveId = workItem.ArticleId,
                 PropertyId = long.Parse(workItem.HotelId),
                 SupplierFamily = workItem.SupplierFamily
             };
-            if (workItem.DataType != "Deleted")
+            if (workItem.ChangeAction != ChangeActionType.Delete)
             {
                 //1. Get the hotel article from the appacitive
                 HotelProperty changedHotel = _appacitive.GetPrimaryContent(_appacitive.CreateHotelKey(key));

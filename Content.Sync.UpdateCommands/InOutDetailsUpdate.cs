@@ -19,7 +19,7 @@ namespace Content.Sync.UpdateCommands
         {
             var key = new HotelProperty()
             {
-                AppacitiveId = workItem.HotelArticleId,
+                AppacitiveId = workItem.ArticleId,
                 PropertyId = long.Parse(workItem.HotelId),
                 SupplierFamily = workItem.SupplierFamily
             };
