@@ -9,9 +9,8 @@ namespace Content.Sync.Data.Interfaces
 {
     public interface IAmenityDataProvider
     {
-        List<HotelAmenity> GetHotelAmenities(IKey hotelKey);
-        void InsertHotelAmenity(IKey hotelKey, HotelAmenity activity);
-        void UpdateHotelAmenity(IKey hotelKey, HotelAmenity activity);
-        void DeleteHotelAmenity(IKey hotelKey, HotelAmenity activity);
+        void InsertHotelAmenity(IKey hotelKey, HotelAmenity amenity);
+        void UpdateHotelAmenity(IKey hotelKey, HotelAmenity amenity);
+        void UpdateAmenityGroup(IKey hotelKey, HotelAmenity amenity, long amenityGroupId);
     }
 }

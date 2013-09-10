@@ -28,7 +28,7 @@ namespace Content.Sync.UpdateCommands
                 HotelProperty changedHotel = _appacitive.GetPrimaryContent(_appacitive.CreateHotelKey(key));
 
                 //2. If hotel not found in the database then insert hotel else update the hotel data.
-                _sqlDb.SaveHotelAndDetails(changedHotel);
+                //_sqlDb.SaveHotelAndDetails(changedHotel);
             }
             else
             {

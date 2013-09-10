@@ -30,8 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ContentUpdate.Hotel">
-      <HintPath>..\Library\ContentUpdate.Hotel.dll</HintPath>
+    <Reference Include="ContentUpdate.Hotel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,9 +45,10 @@
   <ItemGroup>
     <Compile Include="IActivityDataProvider.cs" />
     <Compile Include="IAmenityDataProvider.cs" />
+    <Compile Include="IAmenityGroupDataProvider.cs" />
     <Compile Include="IDescriptionDataProvider.cs" />
     <Compile Include="IHotelDataProvider.cs" />
-    <Compile Include="ISupplierHotelUpdate.cs" />
+    <Compile Include="ISupplierHotelDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

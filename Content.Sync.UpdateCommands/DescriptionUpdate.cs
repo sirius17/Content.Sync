@@ -16,7 +16,7 @@ namespace Content.Sync.UpdateCommands
     {
         protected override Task ProcessHotelWorkItem(WorkItem workItem, System.Threading.CancellationToken cancellationToken)
         {
-            IKey hotelKey = new AppacitiveDAL.HotelKey() { HotelArticleId = workItem.HotelArticleId, HotelId = Convert.ToInt64(workItem.HotelId), SupplierFamily = workItem.SupplierFamily };
+            IKey hotelKey = new AppacitiveDAL.HotelKey() { HotelArticleId = workItem.ArticleId, HotelId = Convert.ToInt64(workItem.HotelId), SupplierFamily = workItem.SupplierFamily };
             IDescriptionDataProvider descriptionDataProvider = new DescriptionDataProvider();
 
             // Get Appacitive descriptions by HotelArticleId
@@ -36,7 +36,7 @@ namespace Content.Sync.UpdateCommands
                 else
                 {
                     // Old Hotel description
-                    if (!description.IsDescriptionUpdated(sourceDescription))
+                    if (!description.IsUpdated(sourceDescription))
                         descriptionDataProvider.UpdateHotelDescription(hotelKey, sourceDescription);
 
                     destinationDescriptions.Remove(description);

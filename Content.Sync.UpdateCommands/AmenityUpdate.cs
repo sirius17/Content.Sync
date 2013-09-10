@@ -15,34 +15,18 @@ namespace Content.Sync.UpdateCommands
     {
         protected override Task ProcessHotelWorkItem(WorkItem workItem, System.Threading.CancellationToken cancellationToken)
         {
-            IKey hotelKey = new AppacitiveDAL.HotelKey() { HotelArticleId = workItem.HotelArticleId, HotelId = Convert.ToInt64(workItem.HotelId), SupplierFamily = workItem.SupplierFamily };
-            IAmenityDataProvider amenityDataProvider = new AmenityDataProvider();
-
-            // Get Appacitive activities by HotelArticleId
-            List<HotelAmenity> sourceAmenities = new AppacitiveDAL.DatabaseManager().GetAmenitiesForHotel(hotelKey);
-
-            // Get Client DB activities by HotelArticleId
-            List<HotelAmenity> destinationAmenities = amenityDataProvider.GetHotelAmenities(hotelKey);
-
-            foreach (var sourceAmenity in sourceAmenities)
+            if(workItem.ChildSchema == Schema.Amenity && workItem.ChangeAction == ChangeActionType.Add)
             {
-                HotelAmenity amenity = destinationAmenities.Find(x => x.Equals(sourceAmenity));
-                if (amenity == null)
-                {
-                    // New Hotel Activity 
-                    amenityDataProvider.InsertHotelAmenity(hotelKey, sourceAmenity);
-                }
-                else
-                {
-                    // Old Hotel Activity
-                    if (!amenity.IsAmenityUpdated(sourceAmenity))
-                        amenityDataProvider.UpdateHotelAmenity(hotelKey, sourceAmenity);
-
-                    destinationAmenities.Remove(amenity);
-                }
+               HotelAmenity amenity = new AppacitiveDAL.DatabaseManager().GetAmenityForSupplierFamily( new HotelAmenity() { Id = workItem.ArticleId }, workItem.SupplierFamily);
+               new AmenityDataProvider().InsertHotelAmenity(new AppacitiveDAL.HotelKey() { SupplierFamily = workItem.SupplierFamily }, amenity);
             }
-
-            destinationAmenities.ForEach(x => amenityDataProvider.DeleteHotelAmenity(hotelKey, x));
+            else if(workItem.ChildSchema == Schema.Amenity && workItem.ChangeAction == ChangeActionType.Update)
+            {
+                HotelAmenity amenity = new AppacitiveDAL.DatabaseManager().GetAmenityForSupplierFamily(new HotelAmenity() { Id = workItem.ArticleId }, workItem.SupplierFamily);
+                new AmenityDataProvider().UpdateHotelAmenity(new AppacitiveDAL.HotelKey() { SupplierFamily = workItem.SupplierFamily }, amenity);
+            }
+            else
+                throw new ArgumentException(string.Format("Invalid ChildSchema: {0} or ChangeAction: {1} in AmenityUpdate Command", workItem.ChildSchema, workItem.ChangeAction));
 
             return null;
         }

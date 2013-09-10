@@ -4,27 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Content.Sync.Data.Interfaces;
+using ContentUpdate.Hotel.Model;
 
 namespace Content.Sync.Data.SqlServer
 {
-    public class SupplierHotelUpdate : ISupplierHotelUpdate
+    public class SupplierHotelDataProvider : ISupplierHotelDataProvider
     {
-        public List<string> GetSupplierHotels(ContentUpdate.Hotel.Model.IKey hotelKey)
+        public List<SupplierHotel> GetSupplierHotels(IKey hotelKey)
         {
             throw new NotImplementedException();
         }
 
-        public void InsertSupplierHotel(ContentUpdate.Hotel.Model.IKey hotelKey, string supplierHotelId)
+        public void InsertSupplierHotel(IKey hotelKey, SupplierHotel supplierHotel)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateSupplierHotel(ContentUpdate.Hotel.Model.IKey hotelKey, string supplierHotelId)
+        public void UpdateSupplierHotel(IKey hotelKey, SupplierHotel supplierHotel)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteSupplierHotel(ContentUpdate.Hotel.Model.IKey hotelKey, string supplierHotelId)
+        public void DeleteSupplierHotel(IKey hotelKey, SupplierHotel supplierHotel)
         {
             throw new NotImplementedException();
         }

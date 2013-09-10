@@ -33,6 +33,13 @@
     <Reference Include="ContentUpdate.Hotel">
       <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.dll</HintPath>
     </Reference>
+    <Reference Include="ContentUpdate.Hotel.DAL.Appacitive, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.DAL.Appacitive.dll</HintPath>
+    </Reference>
+    <Reference Include="ContentUpdate.Hotel.DAL.v2">
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.DAL.v2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,9 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityUpdate.cs" />
+    <Compile Include="AmenityGroupUpdate.cs" />
     <Compile Include="AmenityUpdate.cs" />
-    <Compile Include="ChainUpdate.cs" />
     <Compile Include="DescriptionUpdate.cs" />
+    <Compile Include="HotelAmenityUpdate.cs" />
     <Compile Include="ImageUpdate.cs" />
     <Compile Include="InOutDetailsUpdate.cs" />
     <Compile Include="PolicyUpdate.cs" />
@@ -63,6 +71,14 @@
     <ProjectReference Include="..\Content.Sync.Data.Factories\Content.Sync.Data.Factories.csproj">
       <Project>{B116B4C4-DDED-47FC-A316-603356CC2CB9}</Project>
       <Name>Content.Sync.Data.Factories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Content.Sync.Data.Interfaces\Content.Sync.Data.Interfaces.csproj">
+      <Project>{0e255da0-2828-4bbb-bce4-c377df68a90d}</Project>
+      <Name>Content.Sync.Data.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Content.Sync.Data.SqlServer\Content.Sync.Data.SqlServer.csproj">
+      <Project>{c81b87aa-6169-46ff-8b4e-c74ac229c248}</Project>
+      <Name>Content.Sync.Data.SqlServer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -30,8 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ContentUpdate.Hotel">
-      <HintPath>..\Library\ContentUpdate.Hotel.dll</HintPath>
+    <Reference Include="ContentUpdate.Hotel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -46,6 +47,7 @@
   <ItemGroup>
     <Compile Include="ActivityDataProvider.cs" />
     <Compile Include="AmenityDataProvider.cs" />
+    <Compile Include="AmenityGroupDataProvider.cs" />
     <Compile Include="DataStore\DataConfiguration.cs" />
     <Compile Include="DataStore\HotelCore.designer.cs">
       <AutoGen>True</AutoGen>
@@ -56,7 +58,7 @@
     <Compile Include="DescriptionDataProvider.cs" />
     <Compile Include="HotelDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SupplierHotelUpdate.cs" />
+    <Compile Include="SupplierHotelDataProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Content.Sync.Data.Interfaces\Content.Sync.Data.Interfaces.csproj">

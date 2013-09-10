@@ -20,7 +20,7 @@ namespace Content.Sync.UpdateCommands
             //3. Compare two above list and detect which all activities are added/deleted/updated
             //4. Update/delete/add activities into the client database.
 
-            IKey hotelKey = new AppacitiveDAL.HotelKey() { HotelArticleId = workItem.HotelArticleId, HotelId = Convert.ToInt64(workItem.HotelId), SupplierFamily = workItem.SupplierFamily };
+            IKey hotelKey = new AppacitiveDAL.HotelKey() { HotelArticleId = workItem.ArticleId, HotelId = Convert.ToInt64(workItem.HotelId), SupplierFamily = workItem.SupplierFamily };
             IActivityDataProvider activityDataProvider = new ActivityDataProvider();
 
             // Get Appacitive activities by HotelArticleId
@@ -40,7 +40,7 @@ namespace Content.Sync.UpdateCommands
                 else
                 {
                     // Old Hotel Activity
-                    if (!activity.IsActivityUpdated(sourceActivity))
+                    if (!activity.IsUpdated(sourceActivity))
                         activityDataProvider.UpdateHotelActivity(hotelKey, sourceActivity);
 
                     destinationActivities.Remove(activity);
