@@ -10,7 +10,11 @@ namespace Content.Sync.Clarifi
     public class ModuleInitializer : IContainerInitializer
     {
         public void Initialize(IDependencyContainer container)
-        {   
+        {
+            container
+                .RegisterInstance<IWorkItemCommandFactory>(new  HotelWorkItemCommandFactory(), typeof(HotelWorkItem).Name)
+                .RegisterInstance<IWorkItemCommandFactory>(new MasterWorkItemCommandFactory(), typeof(MasterWorkItem).Name)
+                ;
         }
     }
 }

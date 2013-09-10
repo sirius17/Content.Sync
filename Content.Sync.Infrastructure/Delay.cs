@@ -8,28 +8,33 @@ namespace Content.Sync.Infrastructure
 {
     public class IncrementalDelay
     {
-        public IncrementalDelay(int stepSizeInSeconds, int maxDelayInSeconds)
+        //TODO: Move step size inside the incremental delay class
+        public IncrementalDelay(int stepSizeInSeconds, int minDelayInSeconds, int maxDelayInSeconds)
         {
             if (maxDelayInSeconds < stepSizeInSeconds)
                 throw new ArgumentException("MaxDelay cannot be less than StepSize.");
-            this.Delay = 0;
+            this.MinDelayInSeconds = minDelayInSeconds;
+            this.MaxDelayInSeconds = maxDelayInSeconds;
         }
 
-        private int Delay { get; set; }
+        private int _count = 0;
 
         public int StepSizeInSeconds { get; private set; }
+
+        public int MinDelayInSeconds { get; private set; }
 
         public int MaxDelayInSeconds { get; private set; }
 
         public async Task Wait()
         {
-            this.Delay = Math.Min( this.Delay + this.StepSizeInSeconds, this.MaxDelayInSeconds);
-            await Task.Delay(new TimeSpan(0,0,this.Delay));
+            var delay = Math.Min(this.MinDelayInSeconds + _count * this.StepSizeInSeconds, this.MaxDelayInSeconds);
+            _count++;
+            await Task.Delay(new TimeSpan(0,0, delay));
         }
 
         public void Reset()
         {
-            this.Delay = 0;
+            _count = 0;
         }
 
     }

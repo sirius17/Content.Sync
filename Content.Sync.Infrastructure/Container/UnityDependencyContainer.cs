@@ -24,6 +24,8 @@ namespace Content.Sync.Infrastructure.Container
 
         public object Resolve( Type type, string name )
         {
+            if (name != null)
+                name = name.ToLower();
             return InnerContainer.Resolve(type, name);
         }
 
@@ -40,12 +42,16 @@ namespace Content.Sync.Infrastructure.Container
 
         public bool IsRegistered(Type type, string name)
         {
+            if (name != null)
+                name = name.ToLower();
             return InnerContainer.IsRegistered(type, name);
         }
 
 
         public IDependencyContainer RegisterType(Type from, Type to, string name)
         {
+            if (name != null)
+                name = name.ToLower();
             InnerContainer.RegisterType(from, to, name);
             return this;
         }
@@ -65,6 +71,8 @@ namespace Content.Sync.Infrastructure.Container
 
         public IDependencyContainer RegisterInstance(Type from, object instance, string name)
         {
+            if (name != null)
+                name = name.ToLower();
             InnerContainer.RegisterInstance(from, name, instance);
             return this;
         }
@@ -78,6 +86,8 @@ namespace Content.Sync.Infrastructure.Container
 
         public object Resolve(Type type, string name, ConstructorArg[] args)
         {
+            if (name != null)
+                name = name.ToLower();
             if( args == null || args.Length == 0 )
                 return Resolve(type, name);
             var parameterOverrides = Array.ConvertAll(args, x => new ParameterOverride(x.Name, x.Value) as ResolverOverride);

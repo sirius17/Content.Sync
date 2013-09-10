@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Sync.Clarifi", "Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Sync.Infrastructure", "Content.Sync.Infrastructure\Content.Sync.Infrastructure.csproj", "{C7C5F4EB-834A-468B-B92B-37CE5824C26E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Sync.ErrorSpace", "Content.Sync.ErrorSpace\Content.Sync.ErrorSpace.csproj", "{30443627-DDA5-4DB2-9C43-AE0EB26E55FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{C7C5F4EB-834A-468B-B92B-37CE5824C26E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7C5F4EB-834A-468B-B92B-37CE5824C26E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7C5F4EB-834A-468B-B92B-37CE5824C26E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30443627-DDA5-4DB2-9C43-AE0EB26E55FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30443627-DDA5-4DB2-9C43-AE0EB26E55FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30443627-DDA5-4DB2-9C43-AE0EB26E55FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30443627-DDA5-4DB2-9C43-AE0EB26E55FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

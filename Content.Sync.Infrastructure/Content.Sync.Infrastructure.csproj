@@ -57,6 +57,7 @@
     <Compile Include="Container\IContainerInitializer.cs" />
     <Compile Include="Container\IDependencyContainer.cs" />
     <Compile Include="Container\ModuleSettings.cs" />
+    <Compile Include="Retry.cs" />
     <Compile Include="ObjectBuilder.cs" />
     <Compile Include="Container\Policies.cs" />
     <Compile Include="Container\UnityConfiguration.cs" />

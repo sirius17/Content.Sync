@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System;
 
-namespace Content.Sync.Infrastructure.Container
+namespace Content.Sync.Infrastructure
 {
     public static class ContainerExtensions
     {

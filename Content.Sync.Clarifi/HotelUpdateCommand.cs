@@ -11,26 +11,11 @@ namespace Content.Sync.Clarifi
     {
         public async Task Execute(WorkItem item, CancellationToken cancellationToken)
         {
-            //Specification:
-            // Convert the work item to a specific hotel work item.
-            // Process the hotel work item.
-            // Incase the processing is successful, checkpoint the work item id.
-            // Incase the processing has failed, then handle the failure and checkpoint the id.
-            Exception fault = null;
-            try
-            {
-                await ProcessHotelWorkItem(item, cancellationToken);
-            }
-            catch (Exception ex)
-            {
-                fault = ex;
-            }
-            if (fault != null)
-                await OnFault(item, fault);
+            await ProcessHotelWorkItem(item, cancellationToken);
         }
 
         protected abstract Task ProcessHotelWorkItem( WorkItem workItem, CancellationToken cancellationToken );
 
-        protected abstract Task OnFault(WorkItem workItem, Exception ex);
+        
     }
 }

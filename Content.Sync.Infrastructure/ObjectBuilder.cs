@@ -36,7 +36,7 @@ namespace Content.Sync.Infrastructure
             if (unitySection != null)
                 unityContainer.LoadConfiguration(unitySection);
             // To allow for runtime overriding of static configuration, return a child container.
-            return new UnityDependencyContainer(rootContainer.InnerContainer);
+            return new UnityDependencyContainer(rootContainer.InnerContainer.CreateChildContainer());
         }
 
         private static IDependencyContainer _container = null;

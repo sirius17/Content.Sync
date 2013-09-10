@@ -38,6 +38,22 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Appacitive.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Appacitive.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Appacitive.Sdk.Net45, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Appacitive.Sdk.Net45.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Moq">
+      <HintPath>..\Library\Moq\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -56,8 +72,37 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Appacitive\HotelWorkItemDbFixture.cs" />
+    <Compile Include="Appacitive\SyncDbFixtures.cs" />
+    <Compile Include="Appacitive\TestInitialize.cs" />
+    <Compile Include="MasterWorkItemCommandFactoryFixture.cs" />
+    <Compile Include="HotelWorkItemCommandFactoryFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResolutionFixture.cs" />
+    <Compile Include="SyncTaskFixture.cs" />
+    <Compile Include="Unique.cs" />
+    <Compile Include="WorkerFixture.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Content.Sync.Appacitive\Content.Sync.Appacitive.csproj">
+      <Project>{3a55efbd-f034-4374-a5e6-b133019052bf}</Project>
+      <Name>Content.Sync.Appacitive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Content.Sync.Clarifi\Content.Sync.Clarifi.csproj">
+      <Project>{7f9bfdc2-365e-4542-ada4-7ac5ee82f93e}</Project>
+      <Name>Content.Sync.Clarifi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Content.Sync.ErrorSpace\Content.Sync.ErrorSpace.csproj">
+      <Project>{30443627-dda5-4db2-9c43-ae0eb26e55fa}</Project>
+      <Name>Content.Sync.ErrorSpace</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Content.Sync.Infrastructure\Content.Sync.Infrastructure.csproj">
+      <Project>{c7c5f4eb-834a-468b-b92b-37ce5824c26e}</Project>
+      <Name>Content.Sync.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Content.Sync.Clarifi
 {
-    public interface IWorkItemDb
+    public interface IMasterWorkItemDb
     {
-        Task<WorkItem> GetNextItemAsync(string tenantId, string supplierFamily, long lastProcessedRevision);
+        Task<WorkItem> GetNextItemAsync(string supplierFamily, long lastProcessedRevision);
     }
 }

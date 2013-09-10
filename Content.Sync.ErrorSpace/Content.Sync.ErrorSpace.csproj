@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7F9BFDC2-365E-4542-ADA4-7AC5EE82F93E}</ProjectGuid>
+    <ProjectGuid>{30443627-DDA5-4DB2-9C43-AE0EB26E55FA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Content.Sync.Clarifi</RootNamespace>
-    <AssemblyName>Content.Sync.Clarifi</AssemblyName>
+    <RootNamespace>Content.Sync.ErrorSpace</RootNamespace>
+    <AssemblyName>Content.Sync.ErrorSpace</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,12 +28,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Library\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,37 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IMasterWorkItemDb.cs" />
-    <Compile Include="MasterWorkItemIterator.cs" />
-    <Compile Include="HotelUpdateCommand.cs" />
-    <Compile Include="HotelWorkItemIterator.cs" />
-    <Compile Include="Interfaces\IRetryLog.cs" />
-    <Compile Include="Interfaces\IRevisionDb.cs" />
-    <Compile Include="Interfaces\ISyncDb.cs" />
-    <Compile Include="Interfaces\IWorkItemCommand.cs" />
-    <Compile Include="Interfaces\IWorkItemCommandFactory.cs" />
-    <Compile Include="Interfaces\IHotelWorkItemDb.cs" />
-    <Compile Include="Interfaces\IWorkItemIterator.cs" />
-    <Compile Include="MasterWorkItemCommandFactory.cs" />
-    <Compile Include="Model\BotSettings.cs" />
-    <Compile Include="Model\MasterWorkItem.cs" />
-    <Compile Include="Model\WorkItem.cs" />
-    <Compile Include="ModuleInitializer.cs" />
+    <Compile Include="BaseApplicationException.cs" />
+    <Compile Include="InvalidParameterException.cs" />
+    <Compile Include="IncorrectOperationException.cs" />
+    <Compile Include="LookupFailedException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RevisionState.cs" />
-    <Compile Include="SyncBot.cs" />
-    <Compile Include="Model\HotelWorkItem.cs" />
-    <Compile Include="HotelWorkItemCommandFactory.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Content.Sync.ErrorSpace\Content.Sync.ErrorSpace.csproj">
-      <Project>{30443627-dda5-4db2-9c43-ae0eb26e55fa}</Project>
-      <Name>Content.Sync.ErrorSpace</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Content.Sync.Infrastructure\Content.Sync.Infrastructure.csproj">
-      <Project>{c7c5f4eb-834a-468b-b92b-37ce5824c26e}</Project>
-      <Name>Content.Sync.Infrastructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,94 +8,59 @@ using System.Threading.Tasks;
 namespace Content.Sync.Infrastructure
 {
     /// <summary>
-    /// Represents the worker class.
-    /// Each worker class is responsible for downloading the content for a given
-    /// tenant and supplier. Each worker runs of an iterator that provides a single work 
-    /// for the given worker in each iteration.
+    /// Represents the worker process that can be used to do some work.
+    /// Work is represented by a delegate (with cancellation support) which returns a future
+    /// to track the progress of work and its state.
     /// </summary>
-    public class Worker<T>
+    public class Worker
     {
-        public Worker(Action<T> action)
+        public Worker(string id, Func<CancellationToken, Task> taskToRun)
         {
-            this.Action = action;
+            this.Id = id;
+            this.Run = taskToRun;   
         }
 
-        private Action<T> Action { get; set; }
-        private int _workerState = WorkerState.Stopped;
-        private CancellationTokenSource _tokenSource = null;
-        private ManualResetEventSlim _waitHandle = null;
-        public void Start(T startupArgs)
+        private Func<CancellationToken, Task> Run { get; set; }
+        private int _workerState = (int)WorkerState.Stopped;
+        private Task TaskToRun { get; set; }
+        private CancellationTokenSource TaskCancellation { get; set; }
+
+        public string Id { get; private set; }
+
+        public WorkerState WorkerState
         {
-            // Specification
-            // To make calling Start multiple times a safe call, we use a worker state
-            // to atomically track the state of the worker. Only a single thread can 
-            // take ownership of starting the worker. All subsequent threads would 
-            // simply return as the worker is already started.
-            
-            bool isAlreadyStarted = Interlocked.CompareExchange(ref _workerState, WorkerState.Starting, WorkerState.Stopped) != WorkerState.Stopped;
-            if (isAlreadyStarted == false)
+            get
             {
-                _waitHandle = new ManualResetEventSlim(false);
-                _tokenSource = new CancellationTokenSource();
-                this.StartWork(startupArgs, _tokenSource.Token);
-                _workerState = WorkerState.Started;
+                return (WorkerState)_workerState;
             }
         }
 
-        private async Task StartWork(T startupArgs, CancellationToken cancellationToken)
+        public void Start()
         {
-            // Specification
-            // Until a cancellation is requested, continue iterating thru the work source.
-            // and execute the work item one at a time. When cancellation is requested,
-            // then set the waitHandle to signal that execution has stopped.
-            try
+            if( Interlocked.CompareExchange(ref _workerState, (int)WorkerState.Starting, (int)WorkerState.Stopped) == (int)WorkerState.Stopped)
             {
-                if (cancellationToken.IsCancellationRequested == false)
-                    await Task.Run(() => this.Action(startupArgs), cancellationToken);
+                this.TaskCancellation = new CancellationTokenSource();
+                this.TaskToRun = this.Run(this.TaskCancellation.Token);
+                _workerState = (int)WorkerState.Started;
             }
-            finally
-            {
-                // Signal the wait handle to indicate that the work has stopped.
-                _waitHandle.Set();
-            }
+            else 
+                throw new Exception("Worker is already running.");
         }
 
-        /// <summary>
-        /// Stops the worker incase it is running. Calling this multiple times in quick successing will throw. 
-        /// </summary>
-        /// <param name="timeoutInMs">Timeout to wait for the worker to stop. The default value -1 will block perpetually.</param>
-        /// <returns>Will return true incase the worker stops successfully within the specified timeout.</returns>
-        public bool Stop(int timeoutInMs = -1)
+        public void Stop()
         {
-            // Specification:
-            // If the worker is already stopped then ignore.
-            // Incase the worker is running, then signal cancellation via the cancellation token.
-            // Then block on the wait handle which will be signalled when the worker has stopped running.
-            // Incase the worker is in the stopping state, then throw ?
-
-            if (_workerState == WorkerState.Stopped) return true;
-            bool isAlreadyCancelling = Interlocked.CompareExchange(ref _workerState, WorkerState.Stopping, WorkerState.Started) != WorkerState.Started;
-            if (isAlreadyCancelling == true) throw new Exception("Stop already requested on worker.");
-            
-            _tokenSource.Cancel();
-            bool result = false;
-            if (timeoutInMs == -1)
+            if (_workerState == (int)WorkerState.Stopped)
+                return;
+            if (Interlocked.CompareExchange(ref _workerState, (int)WorkerState.Started, (int)WorkerState.Stopping) == (int)WorkerState.Started)
             {
-                _waitHandle.Wait();
-                result = true;
+                this.TaskCancellation.Cancel();
+                this.TaskToRun.Wait();
+                _workerState = (int)WorkerState.Stopped;
+                this.TaskToRun.Dispose();
+                this.TaskToRun = null;
+                this.TaskCancellation.Dispose();
+                this.TaskCancellation = null;
             }
-            else
-            {
-                result = _waitHandle.Wait(timeoutInMs);
-            }
-            _tokenSource.Dispose();
-            _tokenSource = null;
-            _waitHandle.Dispose();
-            _waitHandle = null;
-            _workerState = WorkerState.Stopped;
-            return result;
         }
-
-        
     }
 }

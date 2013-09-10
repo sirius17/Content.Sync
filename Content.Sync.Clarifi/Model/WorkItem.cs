@@ -1,5 +1,6 @@
-﻿
+﻿using Content.Sync.Infrastructure;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,27 +9,39 @@ using System.Threading.Tasks;
 
 namespace Content.Sync.Clarifi
 {
-    /// <summary>
-    /// Represents a single work item that is to be processed.
-    /// </summary>
-    public class WorkItem
+    public abstract class WorkItem
     {
+        public string Id { get; set; }
 
-        public string TenantId { get; internal set; }
+        public long Revision { get; set; }
 
-        public string HotelArticleId { get; internal set; }
+        public DateTime UtcCreateDate { get; set; }
 
-        public string HotelId { get; internal set; }
+        public DateTime UtcLastUpdated { get; set; }
 
-        public string SupplierFamily { get; internal set; }
+        private ConcurrentDictionary<string, string> _properties = new ConcurrentDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-        public long Revision { get; internal set; }
-
-        public string DataType { get; internal set; }
-
-        public async Task Do()
+        protected IEnumerable<string> Keys
         {
-            await this.Do(CancellationToken.None);
+            get
+            {
+                return _properties.Keys;
+            }
+        }
+
+        protected string this[string name]
+        {
+            get 
+            {
+                string output = null;
+                if (_properties.TryGetValue(name, out output) == true)
+                    return output;
+                else return null;
+            }
+            set
+            {
+                _properties[name] = value;
+            }
         }
 
         public async Task Do(CancellationToken cancellationToken)
@@ -36,11 +49,21 @@ namespace Content.Sync.Clarifi
             // Specification
             // Each task will build the specific command that is required to execute it.
             // and delegate the execution the the command.
-            
-            //TODO: Initialize the factory. Need to decide whether this should be via service locator or dependency injection.
-            IWorkItemCommandFactory factory = null;  // Initialize this
+
+            var factory = ObjectBuilder.Build<IWorkItemCommandFactory>(this.GetType().Name);
             var command = factory.BuildCommand(this);
             await command.Execute(this, cancellationToken);
+        }
+
+        public Task MarkAsFaultedAsync(List<Exception> faults)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal async Task CheckpointRevision(string botId)
+        {
+            var db = ObjectBuilder.Build<ISyncDb>();
+            await db.CheckpointRevision(botId, this.Revision);
         }
     }
 }
