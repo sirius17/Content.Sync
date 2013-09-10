@@ -17,7 +17,7 @@ namespace Content.Sync.Clarifi
 
         [Dependency]
         public IHotelWorkItemDb Db { get; set; }
-
+         
         public string SupplierFamily { get; private set; }
 
         private long _lastProcessedRevision;

@@ -31,7 +31,7 @@ namespace Content.Sync.Appacitive
                                                                 });
             var changeLog = (await Articles.FindAllAsync("master_change_log", query.ToString(), pageSize: 1, orderBy: "version", sortOrder: SortOrder.Ascending)).SingleOrDefault();
             if (changeLog == null) return null;
-            return changeLog.ToHotelWorkItem();
+            return changeLog.ToMasterWorkItem();
         }
     }
 }
