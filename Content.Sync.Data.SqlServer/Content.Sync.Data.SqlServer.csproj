@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ContentUpdate.Hotel">
-      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.dll</HintPath>
+      <HintPath>..\Library\ContentUpdate.Hotel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityDataProvider.cs" />
+    <Compile Include="AmenityDataProvider.cs" />
     <Compile Include="CheckInOutDetailsDataProvider.cs" />
     <Compile Include="DataStore\DataConfiguration.cs" />
     <Compile Include="DataStore\HotelCore.designer.cs">
@@ -52,10 +54,12 @@
       <DependentUpon>HotelCore.dbml</DependentUpon>
     </Compile>
     <Compile Include="DataStore\HotelCoreContext.cs" />
+    <Compile Include="DescriptionDataProvider.cs" />
     <Compile Include="HotelChainProvider.cs" />
     <Compile Include="HotelDataProvider.cs" />
     <Compile Include="ImageDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SupplierHotelUpdate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Content.Sync.Data.Interfaces\Content.Sync.Data.Interfaces.csproj">
