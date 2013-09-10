@@ -17,12 +17,12 @@ namespace Content.Sync.Appacitive
             workItem.Id = article.Id;
             workItem.UtcCreateDate = article.UtcCreateDate;
             workItem.UtcLastUpdated = article.UtcLastUpdated;
-            workItem.HotelArticleId = article.Get<string>("hotel_article_id");
+            workItem.ArticleId = article.Get<string>("hotel_article_id");
             workItem.HotelId = article.Get<string>("hotel_id");
             workItem.Revision = article.Get<long>("version");
             workItem.SupplierFamily = article.Get<string>("supplier_family");
-            workItem.DataType = article.Get<string>("content_type");
-            workItem.ChangeType = article.Get<string>("change_type");
+            workItem.Schema = article.Get<string>("content_type");
+            workItem.ChangeType = article.Get<ChangeType>("change_type");
             return workItem;
         }
 
@@ -35,8 +35,8 @@ namespace Content.Sync.Appacitive
             workItem.UtcLastUpdated = article.UtcLastUpdated;
             workItem.Revision = article.Get<long>("version");
             workItem.SupplierFamily = article.Get<string>("supplier_family");
-            workItem.DataType = article.Get<string>("content_type");
-            workItem.ChangeType = article.Get<string>("change_type");
+            workItem.Schema = article.Get<string>("content_type");
+            workItem.ChangeType = article.Get<ChangeType>("change_type");
             return workItem;
         }
     }

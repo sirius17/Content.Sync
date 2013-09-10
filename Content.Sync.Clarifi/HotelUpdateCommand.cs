@@ -11,10 +11,12 @@ namespace Content.Sync.Clarifi
     {
         public async Task Execute(WorkItem item, CancellationToken cancellationToken)
         {
-            await ProcessHotelWorkItem(item, cancellationToken);
+            if (item is HotelWorkItem == false)
+                throw new ErrorSpace.InvalidParameterException("Workitem must be of type HotelWorkItem.");
+            await ProcessHotelWorkItem(item as HotelWorkItem, cancellationToken);
         }
 
-        protected abstract Task ProcessHotelWorkItem( WorkItem workItem, CancellationToken cancellationToken );
+        protected abstract Task ProcessHotelWorkItem( HotelWorkItem workItem, CancellationToken cancellationToken );
 
         
     }

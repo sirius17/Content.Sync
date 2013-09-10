@@ -15,16 +15,14 @@ namespace Content.Sync.Clarifi
     {
         public string DeploymentId { get; set; }
 
-        public string HotelArticleId { get; set; }
+        public string ArticleId { get; set; }
 
         public string HotelId { get; set; }
 
         public string SupplierFamily { get; set; }
 
-        public long Revision { get; set; }
+        public string Schema { get; set; }
 
-        public string DataType { get; set; }
-
-        public string ChangeType { get; set; }
+        public ChangeType ChangeType { get; set; }
     }
 }

@@ -36,7 +36,7 @@ namespace Content.Sync.Fixtures
         public void HotelWorkItemInputShouldBuildOnDataTypeAndChangeTypeTest()
         {
             var dataType = Unique.NewString;
-            var workItem = new HotelWorkItem() { DataType = dataType, ChangeType = "updated" };
+            var workItem = new HotelWorkItem() { Schema = dataType, ChangeType = ChangeType.Updated };
             var command = new Mock<IWorkItemCommand>().Object;
             try
             {

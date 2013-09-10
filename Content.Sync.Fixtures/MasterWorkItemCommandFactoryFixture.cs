@@ -36,7 +36,7 @@ namespace Content.Sync.Fixtures
         public void MasterWorkItemInputShouldBuildOnDataTypeAndChangeTypeTest()
         {
             var dataType = Unique.NewString;
-            var workItem = new MasterWorkItem() { DataType = dataType, ChangeType = "updated" };
+            var workItem = new MasterWorkItem() { Schema = dataType, ChangeType = ChangeType.Updated };
             var command = new Mock<IWorkItemCommand>().Object;
             try
             {

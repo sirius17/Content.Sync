@@ -12,13 +12,10 @@ namespace Content.Sync.Clarifi
 
         public string NativeId { get; set; }
 
-        public string DataType { get; set; }
+        public string Schema { get; set; }
 
-        public string ChangeType { get; set; }
+        public ChangeType ChangeType { get; set; }
 
         public string SupplierFamily { get; set; }
-
-        public long Revision { get; set; }
-
     }
 }

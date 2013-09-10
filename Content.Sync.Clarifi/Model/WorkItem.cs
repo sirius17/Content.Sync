@@ -55,7 +55,7 @@ namespace Content.Sync.Clarifi
             await command.Execute(this, cancellationToken);
         }
 
-        public Task MarkAsFaultedAsync(List<Exception> faults)
+	    public Task MarkAsFaultedAsync(List<Exception> faults)
         {
             throw new NotImplementedException();
         }
@@ -64,6 +64,35 @@ namespace Content.Sync.Clarifi
         {
             var db = ObjectBuilder.Build<ISyncDb>();
             await db.CheckpointRevision(botId, this.Revision);
-        }
+        }    
+    }
+
+ 	public enum ChangeType
+    {
+        Added,
+        Updated,
+        Deleted
+    }
+
+    public enum Schema
+    {
+        Hotel,
+        SupplierHotel,
+        SupplierFamily,
+        Amenity,
+        AmenityGroup,
+        Attration,
+        InOutDetail,
+        Description,
+        Detail,
+        Policy,
+        CancellationPolicy,
+        Chain,
+        TagGroup,
+        Tag,
+        SupplierTag,
+        ActivityGroup,
+        HotelActivity,
+        Image
     }
 }

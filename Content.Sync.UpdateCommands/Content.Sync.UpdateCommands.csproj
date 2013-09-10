@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{99094536-43B8-4E37-9CA8-23A2B31000EE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Content.Sync.UpdateCommands</RootNamespace>
+    <AssemblyName>Content.Sync.UpdateCommands</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ContentUpdate.Hotel">
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.dll</HintPath>
+    </Reference>
+    <Reference Include="ContentUpdate.Hotel.DAL.Appacitive, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.DAL.Appacitive.dll</HintPath>
+    </Reference>
+    <Reference Include="ContentUpdate.Hotel.DAL.v2">
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.DAL.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActivityUpdate.cs" />
+    <Compile Include="AmenityGroupUpdate.cs" />
+    <Compile Include="AmenityUpdate.cs" />
+    <Compile Include="DescriptionUpdate.cs" />
+    <Compile Include="HotelAmenityUpdate.cs" />
+    <Compile Include="ImageUpdate.cs" />
+    <Compile Include="InOutDetailsUpdate.cs" />
+    <Compile Include="PolicyUpdate.cs" />
+    <Compile Include="NearbyAttractionsUpdate.cs" />
+    <Compile Include="HotelUpdate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SupplierHotelUpdate.cs" />
+    <Compile Include="TagUpdate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Content.Sync.Clarifi\Content.Sync.Clarifi.csproj">
+      <Project>{7f9bfdc2-365e-4542-ada4-7ac5ee82f93e}</Project>
+      <Name>Content.Sync.Clarifi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Content.Sync.Data.Factories\Content.Sync.Data.Factories.csproj">
+      <Project>{B116B4C4-DDED-47FC-A316-603356CC2CB9}</Project>
+      <Name>Content.Sync.Data.Factories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Content.Sync.Data.Interfaces\Content.Sync.Data.Interfaces.csproj">
+      <Project>{0e255da0-2828-4bbb-bce4-c377df68a90d}</Project>
+      <Name>Content.Sync.Data.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Content.Sync.Data.SqlServer\Content.Sync.Data.SqlServer.csproj">
+      <Project>{c81b87aa-6169-46ff-8b4e-c74ac229c248}</Project>
+      <Name>Content.Sync.Data.SqlServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
