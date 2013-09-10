@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ContentUpdate.Hotel">
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,8 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICheckInOutDetailsDataProvider.cs" />
     <Compile Include="IAmenityDataProvider.cs" />
+    <Compile Include="IHotelChainProvider.cs" />
     <Compile Include="IHotelDataProvider.cs" />
+    <Compile Include="IImageDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

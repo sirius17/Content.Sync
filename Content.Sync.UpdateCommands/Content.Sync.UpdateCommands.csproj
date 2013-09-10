@@ -64,6 +64,10 @@
       <Project>{B116B4C4-DDED-47FC-A316-603356CC2CB9}</Project>
       <Name>Content.Sync.Data.Factories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Content.Sync.Data.Interfaces\Content.Sync.Data.Interfaces.csproj">
+      <Project>{0E255DA0-2828-4BBB-BCE4-C377DF68A90D}</Project>
+      <Name>Content.Sync.Data.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

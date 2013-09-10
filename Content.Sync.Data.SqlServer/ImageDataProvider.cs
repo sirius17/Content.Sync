@@ -8,19 +8,24 @@ using ContentUpdate.Hotel.Model;
 
 namespace Content.Sync.Data.SqlServer
 {
-    public class HotelDataProvider : IHotelDataProvider
+    public class ImageDataProvider : IImageDataProvider
     {
-        public void AddHotel(HotelProperty hotel)
+        public List<HotelImage> GetImagesForHotel(string hotelId, string supplierFamily)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateHotel(HotelProperty hotel)
+        public void SaveImage(string hotelId, string supplierFamily, HotelImage sourceImage)
         {
             throw new NotImplementedException();
         }
 
-        public void DisableHotel(string hotelId, string supplierFamily)
+        public void UpdateImage(string hotelId, string supplierFamily, HotelImage sourceImage)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteImage(string imageId)
         {
             throw new NotImplementedException();
         }

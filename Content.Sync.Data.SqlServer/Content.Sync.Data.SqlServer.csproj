@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ContentUpdate.Hotel">
+      <HintPath>..\Library\Clarifi\ContentUpdate.Hotel.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -41,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckInOutDetailsDataProvider.cs" />
     <Compile Include="DataStore\DataConfiguration.cs" />
     <Compile Include="DataStore\HotelCore.designer.cs">
       <AutoGen>True</AutoGen>
@@ -48,7 +52,9 @@
       <DependentUpon>HotelCore.dbml</DependentUpon>
     </Compile>
     <Compile Include="DataStore\HotelCoreContext.cs" />
+    <Compile Include="HotelChainProvider.cs" />
     <Compile Include="HotelDataProvider.cs" />
+    <Compile Include="ImageDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
