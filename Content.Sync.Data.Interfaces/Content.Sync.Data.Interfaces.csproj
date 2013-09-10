@@ -45,9 +45,12 @@
   <ItemGroup>
     <Compile Include="IActivityDataProvider.cs" />
     <Compile Include="IAmenityDataProvider.cs" />
+    <Compile Include="ICheckInOutDetailsDataProvider.cs" />
     <Compile Include="IAmenityGroupDataProvider.cs" />
     <Compile Include="IDescriptionDataProvider.cs" />
+    <Compile Include="IHotelChainProvider.cs" />
     <Compile Include="IHotelDataProvider.cs" />
+    <Compile Include="IImageDataProvider.cs" />
     <Compile Include="ISupplierHotelDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

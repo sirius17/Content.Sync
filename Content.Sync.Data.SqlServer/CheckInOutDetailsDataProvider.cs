@@ -4,23 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Content.Sync.Data.Interfaces;
-using ContentUpdate.Hotel.Model;
 
 namespace Content.Sync.Data.SqlServer
 {
-    public class HotelDataProvider : IHotelDataProvider
+    public class CheckInOutDetailsDataProvider : ICheckInOutDetailsDataProvider
     {
-        public void AddHotel(HotelProperty hotel)
+        public void AddOrUpdate(string hotelId, string supplierFamily, List<ContentUpdate.Hotel.Model.HotelTimeDetail> inDetails, List<ContentUpdate.Hotel.Model.HotelTimeDetail> outDetails)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateHotel(HotelProperty hotel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DisableHotel(string hotelId, string supplierFamily)
+        public void Delete(string hotelId, string supplierFamily)
         {
             throw new NotImplementedException();
         }

@@ -4,15 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ContentUpdate.Hotel.Model;
-
 namespace Content.Sync.Data.Interfaces
 {
-    public interface IHotelDataProvider
+    public interface IHotelChainProvider
     {
-        void AddHotel(HotelProperty hotel);
-
-        void UpdateHotel(HotelProperty hotel);
-
-        void DisableHotel(string hotelId, string supplierFamily);
+        void AddChain(HotelChain chain);
     }
 }

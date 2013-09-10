@@ -6,7 +6,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{941F
 		Library\Appacitive.Sdk.dll = Library\Appacitive.Sdk.dll
 		Library\Appacitive.Sdk.Net45.dll = Library\Appacitive.Sdk.Net45.dll
 		Library\Clarifi\ContentUpdate.Hotel.DAL.Appacitive.dll = Library\Clarifi\ContentUpdate.Hotel.DAL.Appacitive.dll
-		Library\Clarifi\ContentUpdate.Hotel.DAL.v2.dll = Library\Clarifi\ContentUpdate.Hotel.DAL.v2.dll
 		Library\Clarifi\ContentUpdate.Hotel.dll = Library\Clarifi\ContentUpdate.Hotel.dll
 		Library\Newtonsoft.Json.dll = Library\Newtonsoft.Json.dll
 	EndProjectSection

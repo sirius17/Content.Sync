@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="ActivityDataProvider.cs" />
     <Compile Include="AmenityDataProvider.cs" />
+    <Compile Include="CheckInOutDetailsDataProvider.cs" />
     <Compile Include="AmenityGroupDataProvider.cs" />
     <Compile Include="DataStore\DataConfiguration.cs" />
     <Compile Include="DataStore\HotelCore.designer.cs">
@@ -56,7 +57,9 @@
     </Compile>
     <Compile Include="DataStore\HotelCoreContext.cs" />
     <Compile Include="DescriptionDataProvider.cs" />
+    <Compile Include="HotelChainProvider.cs" />
     <Compile Include="HotelDataProvider.cs" />
+    <Compile Include="ImageDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplierHotelDataProvider.cs" />
   </ItemGroup>
